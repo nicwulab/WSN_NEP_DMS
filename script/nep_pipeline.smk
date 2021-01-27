@@ -1,45 +1,49 @@
 # only variable needed to change
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-import glob
-import os
-import numpy as np
 
-PROJECT_PATH='/Users/yiquan/PycharmProjects/NEP Project'
-R1 = PROJECT_PATH + '/data/{SAMPLENAME}_L001_R1_001.fastq.gz'
-R2 = PROJECT_PATH + '/data/{SAMPLENAME}_L001_R2_001.fastq.gz'
-SAMPLENAMES, = glob_wildcards(R1)
 
+PROJECT_PATH='/Users/yiquan/PycharmProjects/NEP_Project'
+FQ = PROJECT_PATH + '/fastq/{SAMPLENAME}/L001_R1_001.fastq.gz'
+SAMPLENAMES, = glob_wildcards(FQ)
+FQ_FOLDER = PROJECT_PATH + '/fastq/{SAMPLENAME}'
+print(SAMPLENAMES)
+RESULT_PATH = PROJECT_PATH + '/results/{SAMPLENAME}'
+RM_TAG_FAS = RESULT_PATH + '/rm_tag.fa'
+RM_TAG_FQ = RESULT_PATH + '/rm_tag.fq'
+ASSEMBLED_FQ = RESULT_PATH + '/assembled.fq'
+TABLE = RESULT_PATH + '/nep_mut.tsv'
 
 rule all:
     input:
-        expand('{sample}.tsv', sample=SAMPLES)
+        expand(TABLE, SAMPLENAME=SAMPLENAMES),
+        expand(RM_TAG_FAS, SAMPLENAME = SAMPLENAMES),
+        expand(RM_TAG_FQ, SAMPLENAME = SAMPLENAMES),
+        expand(ASSEMBLED_FQ, SAMPLENAME = SAMPLENAMES)
 
 rule merge_RMTS:
     input:
-        FQ1=R1,
-        FQ2=R2
+        FQ_FOLDER
     output:
-        COMBINED_FAS
+        RM_TAG_FAS
+    conda:
+        PROJECT_PATH+ "/env/merge_RMTS.yaml"
     shell:
-        'python Fastq2ErrorFreeFasta.py -i {input} -o {output} -b 0-0 -p 1-8 -d 2 -F _R1_ -R _R2_ -e 0.9 -s 2'
+        'python Fastq2ErrorFreeFasta.py -i {input} -o {output} -b 0-0 -p 1-8 -d 2 -F _R1_ -R _R2_ -e 0.8 -s 2'
 
 rule fas2fq:
     input:
-        COMBINED_FAS
+        RM_TAG_FAS
     output:
-        COMBINED_FQ
+        RM_TAG_FQ
     shell:
-        'seqtk seq -F '#' {input} > {output}'
+        "seqtk seq -F '#' {input} > {output}"
 
 rule flash:
     input:
-        COMBINED_FQ
+        RM_TAG_FQ
     output:
         ASSEMBLED_FQ
     shell:
-        'flash -m70 -M 80 --interleaved-input {input} -o {output}'
+        "flash -m 70 -M 80 --interleaved-input {input} -c > {output} "
 
 rule fq2count:
     input:
