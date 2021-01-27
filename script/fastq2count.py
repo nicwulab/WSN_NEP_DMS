@@ -45,7 +45,7 @@ def call_mutid(mutpep,refseq,shift):
   return mut_id_ls
 
 def cal_fastq_dic(fastq, Fprimer, Rprimer,ref_aa):
-  print "reading %s" % fastq
+  print ("reading %s" % fastq)
   FPlth = len(Fprimer)
   RPlth = len(Rprimer)
   Rrecords = SeqIO.parse(fastq,"fastq")
