@@ -27,7 +27,7 @@ rule merge_RMTS:
     conda:
         PROJECT_PATH+ "/env/merge_RMTS.yaml"
     shell:
-        'python Fastq2ErrorFreeFasta.py -i {input} -o {output} -b 0-0 -p 1-8 -d 2 -F _R1_ -R _R2_ -e 0.8 -s 2'
+        'python Fastq2ErrorFreeFasta.py -i {input} -o {output} -b 0-0 -p 1-8 -d 3 -F _R1_ -R _R2_ -e 0.7 -s 2'
 
 rule fas2fq:
     input:
