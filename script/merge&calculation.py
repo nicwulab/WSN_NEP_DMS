@@ -23,11 +23,13 @@ def main():
     nep_df = pd.merge(nep_df1,nep_df2,how='outer',on='NEP_Mutation')
     onemut_df = nep_df[~nep_df["NEP_Mutation"].str.contains('-')]
     pos_df = onemut_df.NEP_Mutation.str.extract('(\d+)')
-    one_mut_sortdf = onemut_df.join(pos_df, lsuffix='_caller', rsuffix='_other').set_index(0).sort_index()
+    one_mut_sortdf = onemut_df.join(pos_df, lsuffix='_caller', rsuffix='_other')\
+        .set_index(0)\
+        .fillna(0)\
+        .sort_index()
 
     muts_df = nep_df[nep_df["NEP_Mutation"].str.contains('-')]
-
-    correlation = nep_df.corr(method='pearson')
+    correlation = one_mut_sortdf.corr(method='pearson')
     correlation.to_csv('results/nep_mut_correlation.csv')
     nep_df.to_csv('results/nep_mut.csv')
     one_mut_sortdf.to_csv('results/one_mut.csv')
