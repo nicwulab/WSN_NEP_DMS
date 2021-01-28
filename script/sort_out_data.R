@@ -5,9 +5,9 @@
 library(ggplot2)
 
 
-nep_df <- read.csv('result/nep_mut.csv',header=TRUE)
+nep_df <- read.csv('results/nep_mut.csv',header=TRUE)
 
-input_plot <- ggplot(nep_df, aes(input1, input2))+ geom_point() + labs(x = "input1", y = "input2")+ xlim(1, 75) +ylim(1, 75)+
+input_plot <- ggplot(nep_df, aes(input1, input2))+ geom_point() + labs(x = "input1", y = "input2")+ xlim(1, 200) +ylim(1, 200)+
   theme_linedraw() +
   theme(plot.title=element_blank(),
         legend.title=element_blank()
