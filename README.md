@@ -20,4 +20,4 @@ source activate SARS(for Mac)
 2. Run analysis:
     - go into ```/script/``` folder
     - set the ```PROJECT_PATH``` variable in ```nep_pipeline.smk``` file accordingly
-    - do: ```snakemake -s pipeline.smk``` to excute the analysis
+    - do: ```snakemake --use-conda --cores 4 -s nep_pipeline.smk -j 2``` to excute the analysis
