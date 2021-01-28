@@ -5,7 +5,7 @@ PROJECT_PATH='/Users/yiquan/PycharmProjects/NEP_Project'
 FQ = PROJECT_PATH + '/fastq/{SAMPLENAME}/L001_R1_001.fastq.gz'
 SAMPLENAMES, = glob_wildcards(FQ)
 FQ_FOLDER = PROJECT_PATH + '/fastq/{SAMPLENAME}'
-print(SAMPLENAMES)
+#print(SAMPLENAMES)
 RESULT_PATH = PROJECT_PATH + '/results/{SAMPLENAME}'
 RM_TAG_FAS = RESULT_PATH + '/rm_tag.fa'
 RM_TAG_FQ = RESULT_PATH + '/rm_tag.fq'
