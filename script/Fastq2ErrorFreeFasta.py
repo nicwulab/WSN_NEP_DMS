@@ -200,15 +200,14 @@ def ParseArg():
     if read2i in filename: countr2.append(filename)
   if len(countr1)   != len(countr2): print 'INPUT ERROR: number of read 1 files is different from number of read 2 files'; sys.exit()
   if len(list(set(countr1).intersection(set(countr2)))) != 0: print 'INPUT ERROR: bad read identifier'; sys.exit()
-  return Ecutoff,Scutoff,countr1,Decomp,tagstart,tagend,barstart,barend,read1i,read2i,fafile
+  return Ecutoff,Scutoff,countr1,Decomp,tagstart,tagend,barstart,barend,read1i,read2i,fafile,folder
 
 #CREATE TMP FOLDER
-def creattmpfolder():  
-  tmp = ''
+def creattmpfolder(folder):  
   i = 1
   while i: 
     i += 1
-    tmp = 'tmp'+str(i)+'/' 
+    tmp = folder + '/tmp_'+str(i)+'/'
     tmps = glob.glob(tmp)
     if len(tmps) == 0: 
       os.system('mkdir '+tmp)
@@ -226,8 +225,8 @@ def cleaning(tmp,fafile):
   
 #MAIN#
 def main():
-  Ecutoff,Scutoff,countr1,Decomp,tagstart,tagend,barstart,barend,read1i,read2i,fafile = ParseArg()
-  tmp = creattmpfolder()
+  Ecutoff,Scutoff,countr1,Decomp,tagstart,tagend,barstart,barend,read1i,read2i,fafile,folder = ParseArg()
+  tmp = creattmpfolder(folder)
   ########################################################################
   #           Step 1: Decompose the reads according to the tag sequence  #
   ########################################################################
