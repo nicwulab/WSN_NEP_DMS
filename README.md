@@ -21,3 +21,7 @@ source activate SARS(for Mac)
     - go into ```/script/``` folder
     - set the ```PROJECT_PATH``` variable in ```nep_pipeline.smk``` file accordingly
     - do: ```snakemake --use-conda --cores 4 -s nep_pipeline.smk -j 2``` to excute the analysis
+   
+3. The excuted workflow is as following: 
+
+![workflow](https://github.com/Wangyiquan95/NEP/blob/main/script/dag.pdf?raw=true)
