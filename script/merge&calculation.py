@@ -16,15 +16,22 @@ def main():
     nep2_df = pd.read_csv('results/Sample5_ACAGTGAT/nep_mut.tsv', header=0, sep= '\t')
     nep3_df = pd.read_csv('results/Sample6_GCCAATAT/nep_mut.tsv', header=0, sep= '\t')
     nep4_df = pd.read_csv('results/Sample7_CAGATCAT/nep_mut.tsv', header=0, sep= '\t')
-    nep_df1 = pd.merge(nep1_df,nep2_df,how='inner',on='NEP_Mutation')
+    nep_df1 = pd.merge(nep1_df,nep2_df,how='outer',on='NEP_Mutation')
     nep_df1.columns = ['NEP_Mutation', 'input1', 'input2']
-    nep_df2 = pd.merge(nep3_df,nep4_df,how='inner',on='NEP_Mutation')
+    nep_df2 = pd.merge(nep3_df,nep4_df,how='outer',on='NEP_Mutation')
     nep_df2.columns = ['NEP_Mutation', 'output1', 'output2']
-    nep_df = pd.merge(nep_df1,nep_df2,how='inner',on='NEP_Mutation')
+    nep_df = pd.merge(nep_df1,nep_df2,how='outer',on='NEP_Mutation')
+    onemut_df = nep_df[~nep_df["NEP_Mutation"].str.contains('-')]
+    pos_df = onemut_df.NEP_Mutation.str.extract('(\d+)')
+    one_mut_sortdf = onemut_df.join(pos_df, lsuffix='_caller', rsuffix='_other').set_index(0).sort_index()
+
+    muts_df = nep_df[nep_df["NEP_Mutation"].str.contains('-')]
 
     correlation = nep_df.corr(method='pearson')
     correlation.to_csv('results/nep_mut_correlation.csv')
     nep_df.to_csv('results/nep_mut.csv')
+    one_mut_sortdf.to_csv('results/one_mut.csv')
+    muts_df.to_csv('results/multi_mut.csv')
 
 
 
