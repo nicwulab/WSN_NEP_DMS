@@ -60,7 +60,7 @@ def cal_fastq_dic(fastq, Fprimer, Rprimer,ref_aa):
         mut_id = 'WT'
         mut_id_ls.append(mut_id)
       else:
-        call_mut_id = call_mutid(mut_aa, ref_aa,0)
+        call_mut_id = call_mutid(mut_aa, ref_aa,1)
         mut_id = "-".join(sorted(call_mut_id, key=lambda x:int(x[1:-1])))
         mut_id_ls.append(mut_id)
   AA_dict = Counter(mut_id_ls)
