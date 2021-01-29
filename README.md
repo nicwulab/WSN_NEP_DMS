@@ -13,7 +13,7 @@ Install everything dependencies by conda:
 Before running the analysis, do:
 
 ```
-source activate SARS(for Mac)
+source activate NEP(for Mac)
 ```
 ## Steps ##
 1. set the env
