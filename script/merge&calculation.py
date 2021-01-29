@@ -2,15 +2,19 @@ import numpy as np
 import pandas as pd
 import glob
 
-def cal_enrich(count_DF,column,input):
-    count_DF[column+'_enrich'] = np.log10(((count_DF[column]+1)/(count_DF[column].sum(0)+143))/((count_DF[input]+1)/(count_DF[input].sum(0)+143)))
+def cal_RF(count_DF,column_name,input):
+    count_DF[column_name+'_RF'] = np.log10(((count_DF[column_name]+1)/(count_DF[column_name].sum(0)+len(count_DF[column_name])))/((count_DF[input]+1)/(count_DF[input].sum(0)+len(count_DF[column_name]))))
+    return count_DF
+
+def cal_sum(count_DF,sum_name,column1,column2):
+    count_DF[sum_name] = (count_DF[column1]+count_DF[column2])
     return count_DF
 
 def cal_mean(count_DF,mean,column1,column2):
     count_DF[mean] = (count_DF[column1]+count_DF[column2])/2
     return count_DF
 def main():
-#    nep_files = glob.glob('results/*/nep_mut.tsv')
+#merge the sample nep_mutation and output the single mutation file(one_mut.csv) and multi-mutation file(multi_mut.csv)
 
     nep1_df = pd.read_csv('results/Sample4_TGACCAAT/nep_mut.tsv', header=0, sep= '\t')
     nep2_df = pd.read_csv('results/Sample5_ACAGTGAT/nep_mut.tsv', header=0, sep= '\t')
@@ -27,13 +31,18 @@ def main():
         .set_index(0)\
         .fillna(0)\
         .sort_index()
-
-    muts_df = nep_df[nep_df["NEP_Mutation"].str.contains('-')]
+    muts_df = nep_df[nep_df["NEP_Mutation"].str.contains('-')] #filter by string contain '-'
     correlation = one_mut_sortdf.corr(method='pearson')
     correlation.to_csv('results/nep_mut_correlation.csv')
-    nep_df.to_csv('results/nep_mut.csv')
-    one_mut_sortdf.to_csv('results/one_mut.csv')
-    muts_df.to_csv('results/multi_mut.csv')
+
+    Analyzed_onemut_df = cal_sum(one_mut_sortdf,'input','input1','input2')
+    cal_RF(Analyzed_onemut_df,'output1','input')
+    cal_RF(Analyzed_onemut_df, 'output2', 'input')
+    cal_mean(Analyzed_onemut_df,'average_RF','output1_RF','output2_RF')
+    Analyzed_onemut_df.to_csv('results/Analyzed_onemut.csv')
+#    nep_df.to_csv('results/nep_mut.csv')
+#    one_mut_sortdf.to_csv('results/one_mut.csv')
+#    muts_df.to_csv('results/multi_mut.csv')
 
 
 
