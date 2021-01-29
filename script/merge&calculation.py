@@ -31,6 +31,7 @@ def main():
         .set_index(0)\
         .fillna(0)\
         .sort_index()
+    one_mut_sortdf = one_mut_sortdf.loc[(one_mut_sortdf['input1']>10) & (one_mut_sortdf['input2']>10)] #Pandas dataframe filter with Multiple conditions
     muts_df = nep_df[nep_df["NEP_Mutation"].str.contains('-')] #filter by string contain '-'
     correlation = one_mut_sortdf.corr(method='pearson')
     correlation.to_csv('results/nep_mut_correlation.csv')
