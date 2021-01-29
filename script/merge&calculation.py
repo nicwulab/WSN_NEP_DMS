@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 import glob
 
-def cal_RF(count_DF,column_name,input):
-    count_DF[column_name+'_RF'] = np.log10(((count_DF[column_name]+1)/(count_DF[column_name].sum(0)+len(count_DF[column_name])))/((count_DF[input]+1)/(count_DF[input].sum(0)+len(count_DF[column_name]))))
+def cal_enri(count_DF,column_name,input):
+    count_DF[column_name+'_enri'] = ((count_DF[column_name]+1)/(count_DF[column_name].sum(0)+len(count_DF[column_name])))/((count_DF[input]+1)/(count_DF[input].sum(0)+len(count_DF[column_name])))
     return count_DF
 
 def cal_sum(count_DF,sum_name,column1,column2):
@@ -36,15 +36,16 @@ def main():
     correlation.to_csv('results/nep_mut_correlation.csv')
 
     Analyzed_onemut_df = cal_sum(one_mut_sortdf,'input','input1','input2')
-    cal_RF(Analyzed_onemut_df,'output1','input')
-    cal_RF(Analyzed_onemut_df, 'output2', 'input')
-    cal_mean(Analyzed_onemut_df,'average_RF','output1_RF','output2_RF')
+    cal_enri(Analyzed_onemut_df,'output1','input')
+    cal_enri(Analyzed_onemut_df, 'output2', 'input')
+#    cal_mean(Analyzed_onemut_df,'average_RF','output1_RF','output2_RF')
     Analyzed_onemut_df.to_csv('results/Analyzed_onemut.csv')
 #    nep_df.to_csv('results/nep_mut.csv')
 #    one_mut_sortdf.to_csv('results/one_mut.csv')
 #    muts_df.to_csv('results/multi_mut.csv')
 
-
+#    site_count_df = Analyzed_onemut_df.sum(level=0)
+#    site_count_df.to_csv('results/site_count.csv')
 
 
 if __name__ == "__main__":
