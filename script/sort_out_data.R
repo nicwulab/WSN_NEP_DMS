@@ -5,9 +5,9 @@
 library(ggplot2)
 
 
-nep_df <- read.csv('results/nep_mut.csv',header=TRUE)
+nep_df <- read.csv('results/one_mut.csv',header=TRUE)
 
-input_plot <- ggplot(nep_df, aes(input1, input2))+ geom_point() + labs(x = "input1", y = "input2")+ xlim(1, 300) +ylim(1, 300)+
+input_plot <- ggplot(nep_df, aes(input1, input2))+ geom_point() + labs(x = "input1", y = "input2")+ xlim(1, 150) +ylim(1, 150)+
   theme_linedraw() +
   theme(plot.title=element_blank(),
         legend.title=element_blank()
@@ -15,7 +15,7 @@ input_plot <- ggplot(nep_df, aes(input1, input2))+ geom_point() + labs(x = "inpu
 
 cor.test(nep_df$input1, nep_df$input2, method = "pearson", conf.level = 0.95)
 cor.test(nep_df$output1, nep_df$output2, method = "pearson", conf.level = 0.95)
-output_plot <- ggplot(nep_df, aes(output1, output2))+ geom_point() + labs(x = "input1", y = "input2")+ xlim(1, 300) +ylim(1, 300)+
+output_plot <- ggplot(nep_df, aes(output1, output2))+ geom_point() + labs(x = "output1", y = "output2")+ xlim(1, 150) +ylim(1, 150)+
   theme_linedraw() +
   theme(plot.title=element_blank(),
         legend.title=element_blank()
