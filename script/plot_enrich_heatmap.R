@@ -18,10 +18,10 @@ plot_enrich_heatmap <- function(norm_enrich_table, WTresibox){
           geom_tile(data=norm_enrich_table,aes(x=resi,y=aa,fill=average_RF)) +
           labs("Dose (mg)") +
           scale_fill_gradientn(colours=c("blue", "white", "red"),
-                limits=c(-5.5,1.5),
-                values=rescale(c(-5.5, 0, 1.5)),
-                breaks=c(-5,-4,-3,-2,-1,0,1),
-                labels=c('-5','-4','-3','-2','-1','0','1'),
+                limits=c(-2,1.5),
+                values=rescale(c(-2, 0, 1.5)),
+                breaks=c(-2,-1,0,1),
+                labels=c('-2','-1','0','1'),
                 guide="colorbar",
                 na.value="grey") +
           theme_cowplot(12) +
@@ -37,15 +37,15 @@ plot_enrich_heatmap <- function(norm_enrich_table, WTresibox){
                                        frame.linewidth = 1,
                                        ticks = TRUE,
                                        ticks.colour = "black",
-                                       barwidth = 0.5, barheight = 6, title="Relative\naffinity")) +
+                                       barwidth = 0.5, barheight = 6, title="Relative\n Fitness")) +
           geom_point(data=WTresibox, aes(x=x, y=y), color='gray', size=0.5) +
           xlab("Position") +
           ylab("Amino acid")
-  ggsave('graph/norm_affinity_heatmap.png',p,width=7, height=2.2, dpi=1200)
+  ggsave('graph/NEP_RF_heatmap.png',p,width=12, height=2.2, dpi=1200)
   }
 
 aa_level <- rev(c('E','D','R','K','H','Q','N','S','T','P','G','C','A','V','I','L','M','F','Y','W'))
-WTresibox  <- read_tsv('script/WT_heatmap.tsv')
+
 Analyzed_onemut_df  <- read_csv('results/Analyzed_onemut.csv')
 
 arranged_onemut_df <- Analyzed_onemut_df %>%
@@ -60,4 +60,13 @@ arranged_onemut_df <- Analyzed_onemut_df %>%
                        mutate(resi=factor(resi,levels=unique(resi))) %>%
                        mutate(Pos=as.numeric(as.character(Pos))) %>%
                        select(NEP_Mutation, resi, Pos, aa, average_RF)
+
+WTresibox  <- arranged_onemut_df %>%
+  select(resi,Pos) %>%
+  unique() %>%
+  mutate(WT_resi=str_sub(resi,1,1)) %>%
+  mutate(x=seq(1,109)) %>%
+  mutate(y=match(WT_resi,aa_level)) %>%
+  select(resi,WT_resi,x, y)
+
 plot_enrich_heatmap(arranged_onemut_df, WTresibox)
