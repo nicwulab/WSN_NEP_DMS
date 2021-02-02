@@ -17,9 +17,9 @@ plot_enrich_heatmap <- function(norm_enrich_table, WTresibox){
   p <-  ggplot() +
           geom_tile(data=norm_enrich_table,aes(x=resi,y=aa,fill=average_RF)) +
           labs("Dose (mg)") +
-          scale_fill_gradientn(colours=c("blue", "white", "red"),
+          scale_fill_gradientn(colours=c("blue","blue", "white", "red"),
                 limits=c(-2,1.5),
-                values=rescale(c(-2, 0, 1.5)),
+                values=rescale(c(-2,-0.3, 0, 1.5)),
                 breaks=c(-2,-1,0,1),
                 labels=c('-2','-1','0','1'),
                 guide="colorbar",
@@ -41,10 +41,10 @@ plot_enrich_heatmap <- function(norm_enrich_table, WTresibox){
           geom_point(data=WTresibox, aes(x=x, y=y), color='gray', size=0.5) +
           xlab("Position") +
           ylab("Amino acid")
-  ggsave('graph/NEP_RF_heatmap.png',p,width=12, height=2.2, dpi=1200)
+  ggsave('graph/NEP_RF_heatmap.png',p,width=12, height=2.7, dpi=1200)
   }
 
-aa_level <- rev(c('E','D','R','K','H','Q','N','S','T','P','G','C','A','V','I','L','M','F','Y','W'))
+aa_level <- rev(c('E','D','R','K','H','Q','N','S','T','P','G','C','A','V','I','L','M','F','Y','W','_'))
 
 Analyzed_onemut_df  <- read_csv('results/Analyzed_onemut.csv')
 
