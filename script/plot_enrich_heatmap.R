@@ -38,7 +38,7 @@ plot_enrich_heatmap <- function(norm_enrich_table, WTresibox){
                                        ticks = TRUE,
                                        ticks.colour = "black",
                                        barwidth = 0.5, barheight = 6, title="Relative\n Fitness")) +
-          geom_point(data=WTresibox, aes(x=x, y=y), color='gray', size=0.5) +
+          geom_point(data=WTresibox, aes(x=x, y=y), color='black', size=0.5) +
           xlab("Position") +
           ylab("Amino acid")
   ggsave('graph/NEP1_RF_heatmap.png',p1,width=12, height=2.7, dpi=1200)
@@ -67,7 +67,7 @@ plot_enrich_heatmap <- function(norm_enrich_table, WTresibox){
                                        ticks = TRUE,
                                        ticks.colour = "black",
                                        barwidth = 0.5, barheight = 6, title="Relative\n Fitness")) +
-          geom_point(data=WTresibox, aes(x=x, y=y), color='gray', size=0.5) +
+          geom_point(data=WTresibox, aes(x=x, y=y), color='black', size=0.5) +
           xlab("Position") +
           ylab("Amino acid")
   ggsave('graph/NEP2_RF_heatmap.png',p2,width=12, height=2.7, dpi=1200)
@@ -97,7 +97,7 @@ plot_enrich_heatmap <- function(norm_enrich_table, WTresibox){
                                        ticks = TRUE,
                                        ticks.colour = "black",
                                        barwidth = 0.5, barheight = 6, title="Relative\n Fitness")) +
-          geom_point(data=WTresibox, aes(x=x, y=y), color='gray', size=0.5) +
+          geom_point(data=WTresibox, aes(x=x, y=y), color='black', size=0.5) +
           xlab("Position") +
           ylab("Amino acid")
   ggsave('graph/NEP_min_RF_heatmap.png',p_min,width=12, height=2.7, dpi=1200)
@@ -125,7 +125,7 @@ plot_enrich_heatmap <- function(norm_enrich_table, WTresibox){
                                        ticks = TRUE,
                                        ticks.colour = "black",
                                        barwidth = 0.5, barheight = 6, title="Relative\n Fitness")) +
-          geom_point(data=WTresibox, aes(x=x, y=y), color='gray', size=0.5) +
+          geom_point(data=WTresibox, aes(x=x, y=y), color='black', size=0.5) +
           xlab("Position") +
           ylab("Amino acid")
   ggsave('graph/NEP_average_RF_heatmap.png',p_average,width=12, height=2.7, dpi=1200)
