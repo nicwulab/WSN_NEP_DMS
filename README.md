@@ -5,6 +5,7 @@
 * [snakemake](https://snakemake.readthedocs.io/en/stable/)
 * [flash](https://github.com/dstreett/FLASH2)
 * [seqtk](https://github.com/lh3/seqtk)
+* [cutadapt](https://cutadapt.readthedocs.io/en/stable/index.html)
 ## Installation ##
 Install everything dependencies by conda:
 

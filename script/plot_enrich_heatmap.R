@@ -34,7 +34,7 @@ plot_enrich_heatmap <- function(norm_enrich_table, WTresibox){
           guides(fill = guide_colorbar(title.theme=element_text(size=textsize,face="bold",colour='black',hjust=0.5),
                                        label.theme=element_text(size=textsize,face="bold",colour='black'),
                                        frame.colour="black",
-                                       frame.linewidth = 1,
+                                       frame.linewidth = 0.5,
                                        ticks = TRUE,
                                        ticks.colour = "black",
                                        barwidth = 0.5, barheight = 6, title="Relative\n Fitness")) +
@@ -63,10 +63,10 @@ plot_enrich_heatmap <- function(norm_enrich_table, WTresibox){
           guides(fill = guide_colorbar(title.theme=element_text(size=textsize,face="bold",colour='black',hjust=0.5),
                                        label.theme=element_text(size=textsize,face="bold",colour='black'),
                                        frame.colour="black",
-                                       frame.linewidth = 1,
+                                       frame.linewidth = 0.5,
                                        ticks = TRUE,
                                        ticks.colour = "black",
-                                       barwidth = 0.5, barheight = 6, title="Relative\n Fitness")) +
+                                       barwidth = 0.5, barheight = 6, title="Relative\n fitness")) +
           geom_point(data=WTresibox, aes(x=x, y=y), color='black', size=0.5) +
           xlab("Position") +
           ylab("Amino acid")
@@ -93,10 +93,10 @@ plot_enrich_heatmap <- function(norm_enrich_table, WTresibox){
           guides(fill = guide_colorbar(title.theme=element_text(size=textsize,face="bold",colour='black',hjust=0.5),
                                        label.theme=element_text(size=textsize,face="bold",colour='black'),
                                        frame.colour="black",
-                                       frame.linewidth = 1,
+                                       frame.linewidth = 0.5,
                                        ticks = TRUE,
                                        ticks.colour = "black",
-                                       barwidth = 0.5, barheight = 6, title="Relative\n Fitness")) +
+                                       barwidth = 0.5, barheight = 6, title="Relative\n fitness")) +
           geom_point(data=WTresibox, aes(x=x, y=y), color='black', size=0.5) +
           xlab("Position") +
           ylab("Amino acid")
@@ -124,7 +124,7 @@ plot_enrich_heatmap <- function(norm_enrich_table, WTresibox){
                                        frame.linewidth = 1,
                                        ticks = TRUE,
                                        ticks.colour = "black",
-                                       barwidth = 0.5, barheight = 6, title="Relative\n Fitness")) +
+                                       barwidth = 0.5, barheight = 6, title="Relative\n fitness")) +
           geom_point(data=WTresibox, aes(x=x, y=y), color='black', size=0.5) +
           xlab("Position") +
           ylab("Amino acid")
@@ -133,27 +133,28 @@ plot_enrich_heatmap <- function(norm_enrich_table, WTresibox){
 
 aa_level <- rev(c('E','D','R','K','H','Q','N','S','T','P','G','C','A','V','I','L','M','F','Y','W','_'))
 
-Analyzed_onemut_df  <- read_csv('results/NEP_onemut_with_low_input.csv')
+Analyzed_onemut_df  <- read_csv('results/Analyzed_onemut.csv')
 
 arranged_onemut_df <- Analyzed_onemut_df %>%
                        filter(NEP_Mutation!='WT') %>%
+                       filter(mutation_type!='silent') %>%
                        mutate(Pos=str_sub(NEP_Mutation,2,-2)) %>%
                        mutate(resi=str_sub(NEP_Mutation,1,-2)) %>%
                        mutate(aa=str_sub(NEP_Mutation,-1,-1)) %>%
                        filter(aa %in% aa_level) %>%
                        mutate(aa=factor(aa,levels=aa_level)) %>%
-                       mutate(Pos=factor(Pos,levels=as.character(seq(1,121)))) %>%
+                       mutate(Pos=factor(Pos,levels=as.character(seq(1,113)))) %>%
                        arrange(Pos) %>%
                        mutate(resi=factor(resi,levels=unique(resi))) %>%
                        mutate(Pos=as.numeric(as.character(Pos))) %>%
-                       select(NEP_Mutation, resi, Pos, aa, output1_RF,output2_RF,average_RF,min_RF)
+                       dplyr::select(NEP_Mutation, resi, Pos, aa, output1_RF,output2_RF,average_RF,min_RF)
 
 WTresibox  <- arranged_onemut_df %>%
-  select(resi,Pos) %>%
+  dplyr::select(resi,Pos) %>%
   unique() %>%
   mutate(WT_resi=str_sub(resi,1,1)) %>%
-  mutate(x=seq(1,121)) %>%
+  mutate(x=seq(1,113)) %>%
   mutate(y=match(WT_resi,aa_level)) %>%
-  select(resi,WT_resi,x, y)
+  dplyr::select(resi,WT_resi,x, y)
 
 plot_enrich_heatmap(arranged_onemut_df, WTresibox)

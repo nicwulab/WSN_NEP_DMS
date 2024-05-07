@@ -114,7 +114,7 @@ def errorcorrect(tmp,ofile,Ecutoff,Scutoff):
         r1 = efreeread.rsplit('_')[0]
         r2 = efreeread.rsplit('_')[1]
         ofile.write('>'+ID+'_F'+"\n"+r1+"\n")
-        ofile.write('>'+ID+'_R'+"\n"+r2+"\n")
+        ofile.write('>'+ID+'_F'+"\n"+r2+"\n")
   ofile.close()
 
 #PARSING ARGUMENTS

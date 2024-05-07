@@ -44,25 +44,33 @@ def call_mutid(mutpep,refseq,shift):
        mut_id_ls.append(refseq[n]+str(pos)+mutpep[n])
   return mut_id_ls
 
-def cal_fastq_dic(fastq, Fprimer, Rprimer,ref_aa):
+def cal_fastq_dic(fastq, ref_dna):
   print ("reading %s" % fastq)
-  FPlth = len(Fprimer)
-  RPlth = len(Rprimer)
   Rrecords = SeqIO.parse(fastq,"fastq")
   mut_id_ls = []
+  len_error = 0
+  shift = 1
   for record in Rrecords:
       ID = str(record.id)
       seq = str(record.seq)
-      if len(seq) != 411: continue
-      trimmed_seq = seq[FPlth:-RPlth]
-      mut_aa = translation(trimmed_seq)
-      if sum_mut(mut_aa, ref_aa) == 0:
+      if len(seq) != 363:
+          len_error += 1
+          continue
+      mut_aa = translation(seq)
+      ref_aa = translation(ref_dna)
+      if sum_mut(seq, ref_dna) == 0:
         mut_id = 'WT'
         mut_id_ls.append(mut_id)
       else:
-        call_mut_id = call_mutid(mut_aa, ref_aa,1)
-        mut_id = "-".join(sorted(call_mut_id, key=lambda x:int(x[1:-1])))
-        mut_id_ls.append(mut_id)
+          if sum_mut(mut_aa, ref_aa) == 0:
+            call_mut_id = call_mutid(seq, ref_dna, shift)
+            mut_ids = "-".join(sorted(call_mut_id, key=lambda x: int(x[1:-1])))
+            mut_id = 'silent' + '_' + mut_ids
+            mut_id_ls.append(mut_id)
+          else:
+            call_mut_id = call_mutid(mut_aa, ref_aa,shift)
+            mut_id = "-".join(sorted(call_mut_id, key=lambda x:int(x[1:-1])))
+            mut_id_ls.append(mut_id)
   AA_dict = Counter(mut_id_ls)
   return AA_dict
 
@@ -82,11 +90,8 @@ def main():
         sys.exit('[usage] python %s <fasq file> <mutation count output filename>')
     fastqfile = sys.argv[1]
     outfilename = sys.argv[2]
-    F_primer = 'GACGTCGAGGAGAATCCCGGGCCC'
-    R_primer = 'AAACAAGGGTGTTTTTTATTATTA'
     ref_dna = 'ATGGATCCAAACACTGTGTCAAGCTTTCAGGACATACTGATGAGGATGTCAAAAATGCAGTTGGGGTCCTCATCGGAGGACTTGAATGGAATAATAACACAGTTCGAGTCTCTGAAACTCTACAGAGATTCGCTTGGAGAAGCAGTAATGAGAATGGGAGACCTCCACTCACTCCAAAACAGAAACGGAAAATGGCGGGAACAATTAGGTCAGAAGTTTGAAGAAATAAGGTGGTTGATTGAAGAAGTGAGACACAGACTGAAGATAACAGAGAATAGTTTTGAGCAAATAACATTTATGCAAGCCTTACAACTATTGCTTGAAGTGGAGCAAGAGATAAGAACTTTCTCGTTTCAGCTTATT'
-    ref_aa = translation(ref_dna)
-    mutation_dic = cal_fastq_dic(fastqfile,F_primer,R_primer,ref_aa)
+    mutation_dic = cal_fastq_dic(fastqfile,ref_dna)
     write_mut_table(mutation_dic, outfilename)
 
 
