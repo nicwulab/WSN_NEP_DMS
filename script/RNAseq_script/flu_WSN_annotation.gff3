@@ -1,0 +1,93 @@
+##gff-version 3
+#!gff-spec-version 1.21
+#!processor NCBI annotwriter
+##sequence-region LC333182.1 1 2341
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=382835
+LC333182.1	DDBJ	region	1	2341	.	+	.	ID=LC333182.1:1..2341;Dbxref=taxon:382835;Name=PB2;gbkey=Src;mol_type=viral cRNA;segment=1;serotype=H1N1;strain=A/WSN/1933
+LC333182.1	DDBJ	region	1	2341	.	-	.	ID=LC333182.1:1..2341;Dbxref=taxon:382835;Name=vPB2;gbkey=Src;mol_type=viral vRNA;segment=1;serotype=H1N1;strain=A/WSN/1933
+LC333182.1	DDBJ	gene	28	2307	.	+	.	ID=gene-PB2;Name=PB2;gbkey=Gene;gene=PB2;gene_biotype=protein_coding
+LC333182.1	DDBJ	CDS	28	2307	.	+	0	ID=cds-BBB04699.1;Parent=gene-PB2;Dbxref=NCBI_GP:BBB04699.1;Name=BBB04699.1;gbkey=CDS;gene=PB2;product=polymerase PB2;protein_id=BBB04699.1
+
+##gff-version 3
+#!gff-spec-version 1.21
+#!processor NCBI annotwriter
+##sequence-region LC333183.1 1 2341
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=382835
+LC333183.1	DDBJ	region	1	2341	.	+	.	ID=LC333183.1:1..2341;Dbxref=taxon:382835;Name=PB1;gbkey=Src;mol_type=viral cRNA;segment=2;serotype=H1N1;strain=A/WSN/1933
+LC333183.1	DDBJ	region	1	2341	.	-	.	ID=LC333183.1:1..2341;Dbxref=taxon:382835;Name=vPB1;gbkey=Src;mol_type=viral vRNA;segment=2;serotype=H1N1;strain=A/WSN/1933
+LC333183.1	DDBJ	gene	25	2298	.	+	.	ID=gene-PB1;Name=PB1;gbkey=Gene;gene=PB1;gene_biotype=protein_coding
+LC333183.1	DDBJ	CDS	25	2298	.	+	0	ID=cds-BBB04700.1;Parent=gene-PB1;Dbxref=NCBI_GP:BBB04700.1;Name=BBB04700.1;gbkey=CDS;gene=PB1;product=polymerase PB1;protein_id=BBB04700.1
+
+
+##gff-version 3
+#!gff-spec-version 1.21
+#!processor NCBI annotwriter
+##sequence-region LC333184.1 1 2233
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=382835
+LC333184.1	DDBJ	region	1	2233	.	+	.	ID=LC333184.1:1..2233;Dbxref=taxon:382835;Name=PA;gbkey=Src;mol_type=viral cRNA;segment=3;serotype=H1N1;strain=A/WSN/1933
+LC333184.1	DDBJ	region	1	2233	.	-	.	ID=LC333184.1:1..2233;Dbxref=taxon:382835;Name=vPA;gbkey=Src;mol_type=viral vRNA;segment=3;serotype=H1N1;strain=A/WSN/1933
+LC333184.1	DDBJ	gene	25	2175	.	+	.	ID=gene-PA;Name=PA;gbkey=Gene;gene=PA;gene_biotype=protein_coding
+LC333184.1	DDBJ	CDS	25	2175	.	+	0	ID=cds-BBB04701.1;Parent=gene-PA;Dbxref=NCBI_GP:BBB04701.1;Name=BBB04701.1;gbkey=CDS;gene=PA;product=polymerase PA;protein_id=BBB04701.1
+
+##gff-version 3
+#!gff-spec-version 1.21
+#!processor NCBI annotwriter
+##sequence-region LC333185.1 1 1775
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=382835
+LC333185.1	DDBJ	region	1	1775	.	+	.	ID=LC333185.1:1..1775;Dbxref=taxon:382835;Name=HA;gbkey=Src;mol_type=viral cRNA;segment=4;serotype=H1N1;strain=A/WSN/1933
+LC333185.1	DDBJ	region	1	1775	.	-	.	ID=LC333185.1:1..1775;Dbxref=taxon:382835;Name=vHA;gbkey=Src;mol_type=viral vRNA;segment=4;serotype=H1N1;strain=A/WSN/1933
+LC333185.1	DDBJ	gene	33	1730	.	+	.	ID=gene-HA;Name=HA;gbkey=Gene;gene=HA;gene_biotype=protein_coding
+LC333185.1	DDBJ	CDS	33	1730	.	+	0	ID=cds-BBB04702.1;Parent=gene-HA;Dbxref=NCBI_GP:BBB04702.1;Name=BBB04702.1;gbkey=CDS;gene=HA;product=hemagglutinin;protein_id=BBB04702.1
+
+##gff-version 3
+#!gff-spec-version 1.21
+#!processor NCBI annotwriter
+##sequence-region LC333186.1 1 1565
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=382835
+LC333186.1	DDBJ	region	1	1565	.	+	.	ID=LC333186.1:1..1565;Dbxref=taxon:382835;Name=NP;gbkey=Src;mol_type=viral cRNA;segment=5;serotype=H1N1;strain=A/WSN/1933
+LC333186.1	DDBJ	region	1	1565	.	-	.	ID=LC333186.1:1..1565;Dbxref=taxon:382835;Name=vNP;gbkey=Src;mol_type=viral vRNA;segment=5;serotype=H1N1;strain=A/WSN/1933
+LC333186.1	DDBJ	gene	46	1542	.	+	.	ID=gene-NP;Name=NP;gbkey=Gene;gene=NP;gene_biotype=protein_coding
+LC333186.1	DDBJ	CDS	46	1542	.	+	0	ID=cds-BBB04703.1;Parent=gene-NP;Dbxref=NCBI_GP:BBB04703.1;Name=BBB04703.1;gbkey=CDS;gene=NP;product=nucleoprotein;protein_id=BBB04703.1
+
+##gff-version 3
+#!gff-spec-version 1.21
+#!processor NCBI annotwriter
+##sequence-region LC333187.1 1 1409
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=382835
+LC333187.1	DDBJ	region	1	1409	.	+	.	ID=LC333187.1:1..1409;Dbxref=taxon:382835;Name=NA;gbkey=Src;mol_type=viral cRNA;segment=6;serotype=H1N1;strain=A/WSN/1933
+LC333187.1	DDBJ	region	1	1409	.	-	.	ID=LC333187.1:1..1409;Dbxref=taxon:382835;Name=vNA;gbkey=Src;mol_type=viral vRNA;segment=6;serotype=H1N1;strain=A/WSN/1933
+LC333187.1	DDBJ	gene	20	1381	.	+	.	ID=gene-NA;Name=NA;gbkey=Gene;gene=NA;gene_biotype=protein_coding
+LC333187.1	DDBJ	CDS	20	1381	.	+	0	ID=cds-BBB04704.1;Parent=gene-NA;Dbxref=NCBI_GP:BBB04704.1;Name=BBB04704.1;gbkey=CDS;gene=NA;product=neuraminidase;protein_id=BBB04704.1
+
+##gff-version 3
+#!gff-spec-version 1.21
+#!processor NCBI annotwriter
+##sequence-region L25818.1 1 1027
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=382835
+L25818.1	Genbank	region	1	1027	.	+	.	ID=L25818.1:1..1027;Dbxref=taxon:382835;gbkey=Src;Name=M;mol_type=genomic RNA;segment=7;serotype=H1N1;strain=A/WSN/1933
+L25818.1	Genbank	region	1	1027	.	-	.	ID=L25818.1:1..1027;Dbxref=taxon:382835;gbkey=Src;Name=vM;mol_type=genomic vRNA;segment=7;serotype=H1N1;strain=A/WSN/1933
+L25818.1	Genbank	exon	1	51	.	+	.	ID=id-L25818.1:1..51-1;exon_number=1;gbkey=exon;number=1;Name=M_exon1
+L25818.1	Genbank	gene	26	1007	.	+	.	ID=gene-M2;Name=M2;gbkey=Gene;gene=M2;gene_biotype=protein_coding
+L25818.1	Genbank	CDS	26	51	.	+	0	ID=cds-AAA91324.1;Parent=gene-M2;Dbxref=NCBI_GP:AAA91324.1;Name=AAA91324.1;Note=putative;gbkey=CDS;gene=M2;product=matrix protein 2;protein_id=AAA91324.1
+L25818.1	Genbank	CDS	740	1007	.	+	1	ID=cds-AAA91324.1;Parent=gene-M2;Dbxref=NCBI_GP:AAA91324.1;Name=AAA91324.1;Note=putative;gbkey=CDS;gene=M2;product=matrix protein 2;protein_id=AAA91324.1
+L25818.1	Genbank	gene	26	739	.	+	.	ID=gene-M1;Name=M1;gbkey=Gene;gene=M1;gene_biotype=protein_coding
+L25818.1	Genbank	CDS	26	784	.	+	0	ID=cds-AAA91325.1;Parent=gene-M1;Dbxref=NCBI_GP:AAA91325.1;Name=AAA91325.1;Note=putative;gbkey=CDS;gene=M1;product=matrix protein 1;protein_id=AAA91325.1
+L25818.1	Genbank	intron	52	739	.	+	.	ID=id-M1;Parent=gene-M1;exon_number=1;gbkey=intron;gene=M1;number=1
+L25818.1	Genbank	exon	740	1008	.	+	.	ID=id-L25818.1:740..1008-2;exon_number=2;gbkey=exon;number=2;Name=M_exon2
+L25818.1	Genbank	region	1003	1008	.	+	.	ID=id-L25818.1:1003..1008;gbkey=polyA_signal
+
+##gff-version 3
+#!gff-spec-version 1.21
+#!processor NCBI annotwriter
+##sequence-region CY034136.1 1 890
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=382835
+CY034136.1	Genbank	region	1	890	.	+	.	ID=CY034136.1:1..890;Dbxref=taxon:382835;Name=NS;collection-date=1933;country=United Kingdom;gbkey=Src;lab-host=Egg passage(s);mol_type=viral cRNA;nat-host=Human;segment=8;serotype=H1N1;strain=A/WSN/1933
+CY034136.1	Genbank	region	1	890	.	-	.	ID=CY034136.1:1..890;Dbxref=taxon:382835;Name=vNS;collection-date=1933;country=United Kingdom;gbkey=Src;lab-host=Egg passage(s);mol_type=viral vRNA;nat-host=Human;segment=8;serotype=H1N1;strain=A/WSN/1933
+CY034136.1	Genbank	gene	27	864	.	+	.	ID=gene-NEP;Name=NEP;gbkey=Gene;gene=NEP;gene_biotype=protein_coding;gene_synonym=NS2
+CY034136.1	Genbank	CDS	27	56	.	+	0	ID=cds-ACF54604.1;Parent=gene-NEP;Dbxref=NCBI_GP:ACF54604.1;Name=ACF54604.1;Note=nonstructural protein 2;gbkey=CDS;gene=NEP;product=nuclear export protein;protein_id=ACF54604.1
+CY034136.1	Genbank	CDS	529	864	.	+	0	ID=cds-ACF54604.1;Parent=gene-NEP;Dbxref=NCBI_GP:ACF54604.1;Name=ACF54604.1;Note=nonstructural protein 2;gbkey=CDS;gene=NEP;product=nuclear export protein;protein_id=ACF54604.1
+CY034136.1	Genbank	gene	27	719	.	+	.	ID=gene-NS1;Name=NS1;gbkey=Gene;gene=NS1;gene_biotype=protein_coding
+CY034136.1	Genbank	CDS	27	719	.	+	0	ID=cds-ACF54603.1;Parent=gene-NS1;Dbxref=NCBI_GP:ACF54603.1;Name=ACF54603.1;gbkey=CDS;gene=NS1;product=nonstructural protein 1;protein_id=ACF54603.1
+
+
+
