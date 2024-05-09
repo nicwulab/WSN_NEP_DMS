@@ -1,4 +1,4 @@
-# NEP Deep mutation scanning and IVA RNA species(mRNA/cRNA/vRNA) quantification
+# NEP Deep mutation scanning and IAV RNA species(mRNA/cRNA/vRNA) quantification
 
 ## Dependencies ##
 * python=3.6
@@ -26,20 +26,27 @@ source activate NEP(for Mac)
     - do: ```snakemake --use-conda --cores 4 -s nep_pipeline.smk -j 2``` to excute the analysis
    
 
-## the influenza virus enumerator of RNA transcripts (InVERT) analysis ##
+## IAV RNA species analysis ##
 
 
 ### 1.1 make reference
+```
 RNAseq_script/make_ref.sh
-### 1.2 align to IVA genome by STAR
+```
+### 1.2 align to IAV genome by STAR
+```
 RNAseq_script/pipeline_align.sh
+```
 ### 1.3 RNA quantification (htseq-count)
+```
 RNAseq_script/pipeline_count.smk
 python RNAseq_script/align2count.py
-
+```
 ### 1.4 Deletion analysis
+```
 python RNAseq_script/align2DIs.py
-
+```
 ### 1.5 cRNA and mRNA ratio estimation by 3 end
+```
 python RNAseq_script/ratio_by3prime_v2.py
-
+```
