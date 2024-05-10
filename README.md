@@ -29,11 +29,11 @@ source activate NEP
 ## IAV RNA species analysis ##
 
 
-### 1.1 make reference
+### 1.1 Make reference
 ```
 RNAseq_script/make_ref.sh
 ```
-### 1.2 align to IAV genome by STAR
+### 1.2 Align to IAV genome by STAR
 ```
 RNAseq_script/pipeline_align.sh
 ```
