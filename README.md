@@ -16,7 +16,7 @@ Install everything dependencies by conda:
 Before running the analysis, do:
 
 ```
-source activate NEP(for Mac)
+source activate NEP
 ```
 ## DMS analysis ##
 1. set the env
@@ -46,7 +46,7 @@ python RNAseq_script/align2count.py
 ```
 python RNAseq_script/align2DIs.py
 ```
-### 1.5 cRNA and mRNA ratio estimation by 3 end
+### 1.5 cRNA and mRNA ratio estimation by 3' end
 ```
 python RNAseq_script/ratio_by3prime_v2.py
 ```
