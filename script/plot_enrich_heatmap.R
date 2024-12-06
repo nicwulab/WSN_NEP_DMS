@@ -143,7 +143,7 @@ arranged_onemut_df <- Analyzed_onemut_df %>%
                        mutate(aa=str_sub(NEP_Mutation,-1,-1)) %>%
                        filter(aa %in% aa_level) %>%
                        mutate(aa=factor(aa,levels=aa_level)) %>%
-                       mutate(Pos=factor(Pos,levels=as.character(seq(1,113)))) %>%
+                       mutate(Pos=factor(Pos,levels=as.character(seq(2,113)))) %>%
                        arrange(Pos) %>%
                        mutate(resi=factor(resi,levels=unique(resi))) %>%
                        mutate(Pos=as.numeric(as.character(Pos))) %>%
@@ -153,7 +153,7 @@ WTresibox  <- arranged_onemut_df %>%
   dplyr::select(resi,Pos) %>%
   unique() %>%
   mutate(WT_resi=str_sub(resi,1,1)) %>%
-  mutate(x=seq(1,113)) %>%
+  mutate(x=seq(1,112)) %>%
   mutate(y=match(WT_resi,aa_level)) %>%
   dplyr::select(resi,WT_resi,x, y)
 
