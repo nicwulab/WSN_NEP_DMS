@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14291492.svg)](https://doi.org/10.5281/zenodo.14291492)
+
 # NEP Deep mutation scanning and IAV RNA species(mRNA/cRNA/vRNA) quantification
 
 ## Dependencies ##
