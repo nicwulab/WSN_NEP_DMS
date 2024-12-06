@@ -42,11 +42,3 @@ RNAseq_script/pipeline_align.sh
 RNAseq_script/pipeline_count.smk
 python RNAseq_script/align2count.py
 ```
-### 1.4 Deletion analysis
-```
-python RNAseq_script/align2DIs.py
-```
-### 1.5 cRNA and mRNA ratio estimation by 3' end
-```
-python RNAseq_script/ratio_by3prime_v2.py
-```
